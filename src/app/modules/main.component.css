@@ -1,0 +1,21 @@
+.active{
+    background-color: white;
+    color: #495057 !important;
+}
+.navbar .navbar-brand {
+    font-size: 30px;
+  }
+  .navbar .nav-item {
+    padding: 10px 20px;
+  }
+  .navbar .nav-link {
+    font-size: 20px;
+    margin-left: 10px;
+  }
+  .fa-bars {
+    color: #fff;
+    font-size: 30px;
+  }
+  @media screen and (max-width: 570px) {
+    .mobile-space {margin-left:30px;}
+    }

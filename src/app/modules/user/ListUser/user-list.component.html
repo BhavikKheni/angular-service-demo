@@ -1,0 +1,17 @@
+<div class="spinner-border text-primary d-flex justify-content-center" role="status" *ngIf="isLoader">
+  
+</div>
+
+<div class="user-list" *ngIf="users.length > 0 && !isLoader">
+    <div class="user-card" *ngFor="let user of users">
+        <div class="card">
+            <img src="assets/user.png" alt="Image" class="img rounded">
+            <div class="container-text">
+              <span class="user-name">{{user['username']}}</span>  
+              <span class="user-company">{{user['company']['name']}}</span>  
+              <span class="user-website">{{user['website']}}</span>
+            </div>
+            <button class="view-profile" (click)="viewProfile(user)">View Profile</button>
+          </div>
+        </div>
+</div>

@@ -2,8 +2,7 @@ import { CommonModule } from "@angular/common";
 import { NgModule } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
 import { MainComponent } from "./main.component";
-import { TodoList } from "./todo/ListTodo/todo-list.component";
-import { UserList } from "./user/ListUser/user-list.component";
+import { SharedModule } from "../shared/shared.module";
 
 const routes: Routes = [
   {
@@ -11,19 +10,21 @@ const routes: Routes = [
     component: MainComponent,
     children: [
       {
-        path: "todo",
-        component: TodoList
+        path: "mytodo",
+        loadChildren: () =>
+          import("./todo/todo.module").then((m) => m.TodoModule),
       },
       {
         path: "user",
-        component: UserList
-      },
+        loadChildren: () =>
+          import("./user/user.module").then((m) => m.UserModule),
+      }
     ],
   },
 ];
 
 @NgModule({
-  imports: [CommonModule, RouterModule.forChild(routes)],
+  imports: [CommonModule, SharedModule, RouterModule.forChild(routes)],
   exports: [RouterModule],
   declarations: [],
 })

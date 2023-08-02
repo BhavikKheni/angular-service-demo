@@ -3,22 +3,25 @@ import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { TodoList } from './ListTodo/todo-list.component';
-
+import { AddTodo } from './AddTodo/add-todo.component';
+import { FormsModule,ReactiveFormsModule } from '@angular/forms';
 
 const routes: Routes = [
-  { path: '', redirectTo: 'list', pathMatch: 'full' },
+  { path: '', redirectTo: '', pathMatch: 'full' },
   {
-    path: 'list', component: TodoList,
+    path: '', component: TodoList,
   },
-//   { path: 'new', component: AddUserComponent },
 ];
 
 @NgModule({
   declarations: [
     TodoList,
+    AddTodo
   ],
   imports: [
     CommonModule,
+    FormsModule,
+    ReactiveFormsModule,
     SharedModule,
     RouterModule.forChild(routes),
   ]

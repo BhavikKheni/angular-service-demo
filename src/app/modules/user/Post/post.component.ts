@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../user.service';
 import { ActivatedRoute } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-user-list',
@@ -9,7 +10,7 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class Post implements OnInit {
 
-  constructor(public userAPI: UserService, public route: ActivatedRoute) { }
+  constructor(public userAPI: UserService, public route: ActivatedRoute,public toastr: ToastrService) { }
   posts:any = []
   comments:any = []
   isLoader = false
@@ -33,6 +34,7 @@ export class Post implements OnInit {
           },
           error: (error) => {
             this.isLoader = false
+            this.toastr.error(error);
             // treat error
           },
           complete: () => {
@@ -50,10 +52,12 @@ export class Post implements OnInit {
       this.userAPI.getPost(`/posts/${post.id}/comments`).subscribe({
         next: (response) => {
          this.comments = response
+
         },
         error: (error) => {
           this.isComment = false
           console.log("Error",error)
+          this.toastr.error(error);
           // treat error
         },
         complete: () => {

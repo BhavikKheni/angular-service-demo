@@ -10,7 +10,7 @@ const routes: Routes = [
     component: MainComponent,
     children: [
       {
-        path: "mytodo",
+        path: "todo",
         loadChildren: () =>
           import("./todo/todo.module").then((m) => m.TodoModule),
       },

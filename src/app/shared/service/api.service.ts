@@ -26,16 +26,15 @@ export class ApiService {
       );
   }
 
-
-//   post(endpoint: string, body: any, contentType?: any, params?: any) {
-//     const headers = this.getHeaders(contentType);
-//     const api = this.url + endpoint;
-//     return this.http.post(api, body, { headers: headers, observe: 'response', params })
-//       .pipe(
-//         map(this.extractData),
-//         catchError(this.handleError)
-//       );
-//   }
+  post(endpoint: string, body: any, contentType?: any, params?: any) {
+    const headers = this.getHeaders(contentType);
+    const api = this.url + endpoint;
+    return this.http.post(api, body, { headers: headers, observe: 'response', params })
+      .pipe(
+        map(this.extractData),
+        catchError(this.handleError)
+      );
+  }
 
 //   put(endpoint: string, body: any, params?: any, contentType?: any) {
 //     const headers = this.getHeaders(contentType);
@@ -45,7 +44,15 @@ export class ApiService {
 //         catchError(this.handleError)
 //       );
 //   }
-  
+delete(endpoint: string, contentType?: any) {
+  const headers = this.getHeaders(contentType);
+  const api = this.url + endpoint;
+  return this.http.delete(api, { headers: headers, observe: 'response' })
+    .pipe(
+      map(this.extractData),
+      catchError(this.handleError)
+    );
+}
   getHeaders(contentType?: any) {
 
     let headers = new HttpHeaders();
